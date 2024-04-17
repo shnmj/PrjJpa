@@ -12,7 +12,7 @@ public class HomeController {
 	public String hi() {
 		return "greetings";   // greentings.msutache
 		// 화면 출력할 template
-		// resources/template package에 생성
+		// resources/template/greetings.mustache
 	}
 	
 	@GetMapping("/hi2")
