@@ -1,0 +1,30 @@
+{{>layouts/header}}
+
+<!-- BootStrap Table 참고 -->
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Title</th>
+      <th scope="col">Content</th>
+    </tr>
+  </thead>
+  <tbody>
+  	{{! 주석}}
+  	{{! #article}}
+    <tr>
+      <th scope="row">{{article.id}}</th>
+      <td>{{article.title}}</td>
+      <td>{{article.content}}</td>
+    </tr>
+    {{! /article}}
+  </tbody>
+</table> 
+
+<a href="/articles/List">목록</a>
+<a href="/articles/WriteForm">글쓰기</a>
+<a href="/articles/{{id}}/EditForm">수정</a>
+<a href="/articles/{{id}}/Delete">삭제</a>
+
+{{>layouts/footer}}

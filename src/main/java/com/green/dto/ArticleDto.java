@@ -20,8 +20,14 @@ public class ArticleDto {
 	}
 	public Article toEntity() {
 		Article article = new Article(null, title, content);
-		return article;
+		return article; // 
 	}
+	@Override
+	public String toString() {  // console창 부분 (sysout)
+		return "ArticleDto [title=" + title + ", content=" + content + "]";
+	}
+	
+	
 	
 	
 	
