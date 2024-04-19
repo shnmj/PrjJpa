@@ -12,10 +12,11 @@
   </thead>
   <tbody>
 
+	  <!-- c:forEach 대신 list 들어오면 알아서 반복 -->
   	{{#articleList}}
     <tr>
       <th scope="row">{{id}}</th>
-      <td><a href="articles/{{id}}">{{title}}</a></td>
+      <td><a href="{{id}}">{{title}}</a></td>
       <td>{{content}}</td>
     </tr>
     {{/articleList}}

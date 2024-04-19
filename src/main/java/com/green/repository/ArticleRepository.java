@@ -7,7 +7,8 @@ import org.springframework.data.repository.CrudRepository;
 import com.green.entity.Article;
 
 public interface ArticleRepository 
-	extends CrudRepository<Article, Long> {
+	extends CrudRepository<Article, Long> {  
+	// article, long이란 세이브가 만들어져있어서 일일이 save 사용 안해도 x
 	
 	@Override
 	ArrayList<Article> findAll(); // 172p
