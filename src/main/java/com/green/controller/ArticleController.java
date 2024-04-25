@@ -157,7 +157,7 @@ public class ArticleController {
 			rttr.addFlashAttribute("msg", id + "번 글이 삭제되었습니다.");
 			// header.mustache 에 출력
 		}
-	
+		
 		return "redirect:/articles/List";
 		
 	}
