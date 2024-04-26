@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class RestControllerExam {
-	// Get
+	// Get               
 	@GetMapping("/RestExam")
 	public String  getRestExam() {
 		return "Get data";

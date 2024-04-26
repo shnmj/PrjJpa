@@ -17,6 +17,8 @@
 	<div><a href="/articles/1">1번 글 조회</a></div>
 	<div><a href="/articles/List">글 목록</a></div>
 	<div>&nbsp;</div>
+	<div><a href="/apitest.html">API TEST</a></div>
+	<div>&nbsp;</div>
 	<div><a href="/RestExam">Rest Api Get</a></div>	
 	<div>
 		<form action="/RestExam" method="GET">
@@ -26,6 +28,11 @@
 	<div>
 		<form action="/RestExam" method="POST">
 			<input type="submit" value="POST" />
+		</form>
+	</div>	
+	<div>
+		<form action="/RestExam" method="PUT">
+			<input type="submit" value="PUT" />
 		</form>
 	</div>	
 	<div>
@@ -45,22 +52,35 @@
 		submit event form action의 페이지로 이동 
 		form name 속성을 가진 input들의 value를 가지고 감
 		*/
-		const formEls = document.querySelectorAll('form'); // 3개 찾음
-		formEls.forEach( (form) => {
-			form.onsubmit = function(e) {
-				e.preventDefault(); // Event 취소시킴
-				alert(this.method);
-				
-				fetch(this.action, {
-					method : this.method		
+		
+		const formEls = document.querySelectorAll('form');
+		console.dir(formEls);
+		formEls.forEach( (form, i) => {    // 요즘 js 이 문법 많이 씀
+		//	form == formEls[i] == this    // i, form이 없으면 this 씀
+			form.addEventListener('submit', function(e) {
+				// submit event의 기본 이벤트(기능)를 중지 - e
+				e.preventDefault(); 
+				console.dir(e);     // form에 발생시킨 event 정보 출력
+				console.dir(this)   // this == e.target
+				alert(e.submitter.value);
+				fetch(this.action,  {
+					method : e.submitter.value
 				})
-					.then((response) => response.text() )
-					.then(text => alert(text) )
-				// this = 현재 event(submit)가 발생된 객체 = 현재 submit 된 form tag
-				alert(this.action)
-			}
-		})
+					.then((resp) => resp.text() ) 
+					.then((text)  => {
+						console.dir(resp)  // 도착한 데이터가 response,
+						alert(error)
+					})
+					.catch((error) => {
+						console.dir(error)
+						alert(error)
+					} )
+					
+				})
+		
+		
 	</script>
 	
-</body>
+	</body>
+	
 </html>
