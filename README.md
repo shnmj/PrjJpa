@@ -3,6 +3,23 @@
 <br>
 <details>
   <summary>
+    Error 해결
+  </summary>
+  <ul dir="auto">
+  <li>Name for argument of type Error</li>
+  <ol>
+    <li>Parameter를 처리하는 BoardVo 객체 이용</li>
+    insert(BoardVo vo) {}
+    <li>insert(@RequestParam("title") String title,</li>
+    @RequestParam("title") String content) {}
+    
+  </ol>
+    
+</details>
+
+<br>
+<details>
+  <summary>
     04.17
   </summary>
   <ul dir="auto">
