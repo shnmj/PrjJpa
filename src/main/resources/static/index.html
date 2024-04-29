@@ -40,6 +40,7 @@
 			<input type="submit" value="DELETE" />
 		</form>	
 	</div>	
+	
 	<div>&nbsp;</div>
 	<div><a href="/h2-console">DB 확인</a></div>
 	
@@ -54,33 +55,32 @@
 		*/
 		
 		const formEls = document.querySelectorAll('form');
-		console.dir(formEls);
-		formEls.forEach( (form, i) => {    // 요즘 js 이 문법 많이 씀
+		console.dir(formEls)
+		formEls.forEach( (form,  i) => {    // 요즘 js 이 문법 많이 씀
 		//	form == formEls[i] == this    // i, form이 없으면 this 씀
 			form.addEventListener('submit', function(e) {
 				// submit event의 기본 이벤트(기능)를 중지 - e
 				e.preventDefault(); 
 				console.dir(e);     // form에 발생시킨 event 정보 출력
-				console.dir(this)   // this == e.target
-				alert(e.submitter.value);
+				// console.dir(this)   // this == e.target
+				alert(e.submitter.value)
 				fetch(this.action,  {
 					method : e.submitter.value
 				})
 					.then((resp) => resp.text() ) 
 					.then((text)  => {
-						console.dir(resp)  // 도착한 데이터가 response,
-						alert(error)
+						console.dir(text);  // 도착한 데이터가 response,
+						alert(text)
 					})
 					.catch((error) => {
 						console.dir(error)
 						alert(error)
-					} )
+					})
+				} )
 					
-				})
-		
-		
+		});
 	</script>
-	
+
 	</body>
 	
 </html>
