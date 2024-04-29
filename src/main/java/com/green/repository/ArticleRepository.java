@@ -4,14 +4,19 @@ import java.util.ArrayList;
 
 import org.springframework.data.repository.CrudRepository;
 
+import com.green.dto.ArticleForm;
 import com.green.entity.Article;
 
 public interface ArticleRepository 
-	extends CrudRepository<Article, Long> {  
+	extends CrudRepository<Article, Long> {   // JPA의 Crud 기능을 동작시키는 class
 	// article, long이란 세이브가 만들어져있어서 일일이 save 사용 안해도 x
+
+ 	// Override/Implement Method로 사용가능한 함수 확인
 	
 	@Override
 	ArrayList<Article> findAll(); // 172p
+	Article save(ArticleForm dto);
+	
 	// findAll 재정의
 	// crud를 상속받음 (interface도 가능)
 	// extends 뒤가 class란걸 알림 -> save(mapper)란 단어를 써도 사용 가능
