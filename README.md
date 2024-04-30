@@ -1,4 +1,49 @@
 <h2>JPA</h2>
+<br>
+<details>
+  <summary>
+    개념 정리
+  </summary>
+  <ul dir="auto">
+    <br>
+    
+    FrameWork
+
+    1. Spring Regacy - Application + Web Application
+       Enterprize (기업) 환경 프로젝트에 웹 이외의 적용하도록 만들어진것 
+
+
+
+    Web MVC : .jsp용
+      HomeController  ->          : db와 관계 비즈니스 로직처리
+      @ReqMap("/")    ->  Service(Interface)  -> ServiceImpl(@Service{"userService"} class)
+                          Repo    : db 조작
+                      ->  Dao(Interface)      -> DaoImpl(@Repo{"userDao} class)
+                      ->  MyBatis
+
+
+    2. SpringBoot Web MVC (Web에 특화)
+        Controller           Model         View
+        HomeController       ->            .jsp
+                                       .mustache()
+
+        세분화
+        Cont -> Service -> Repository -> DB
+        Presentation
+
+
+
+    3. Spring Rest Api 방식 (전체 기능을 함수화 : 
+        Rest : 하나의 주소로 접근 Method를 다르게(Get, Post, Patch, Del)
+        -> Prj를 service 단위로 처리하는 기술
+
+    Method
+    GET        /articles   :  select 실행결과  -> json 출력
+    POST       /articles   :  insert           -> json
+    PATCH      /articles   :  update           -> json
+    Del        /articles   :  del              -> json
+    
+</details>
 <li>Mustache 문법 참조 사이트 : https://bibi6666667.tistory.com/269</li>
 <br>
 <details>
