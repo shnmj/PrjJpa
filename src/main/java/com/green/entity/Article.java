@@ -3,19 +3,29 @@ package com.green.entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id; // pk 영구적 생성
-import lombok.Getter;
+import jakarta.persistence.SequenceGenerator;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 
 // 실제 database의 table 구조를 생성 = create table 
 @Entity
-@NoArgsConstructor 
-@Getter
-@Setter
+@Data
+@NoArgsConstructor   // 기본 생성자
+@AllArgsConstructor  // 모든 인자 생성자
+@SequenceGenerator(
+		name = "ARTICLE_SEQ_GENERATOR", 
+		sequenceName   = "ARTICLE_SEQ",   
+		initialValue   = 1,       // 초기값
+		allocationSize = 1)       // 증가치
 public class Article {
 	@Id                    // primary key	
-	@GeneratedValue        // 값 자동 채움
+	// @GeneratedValue        // 값 자동 채움 (번호 자동 증가)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,
+			generator = "ARTICLE_SEQ_GENERATOR") // 1씩 증가
 	private Long   id;     // Long : null 입력x -> Long
 	@Column  //  Column() 로 type 설정 가능
 	private String title;
@@ -28,14 +38,6 @@ public class Article {
 	public String toString() {
 		return "Article [id=" + id + ", title=" + title + ", content=" + content + "]";
 	} 
-
-	// Constructor
-	public Article(Long id, String title, String content) {
-		super();
-		this.id = id;
-		this.title = title;
-		this.content = content;
-	}
 
 	public void patch(Article article) {
 		if(article.title   != null)
