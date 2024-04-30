@@ -328,5 +328,15 @@
     lazy
     컴파일 시 결정이 아닌 실행할 때 type 결정
     */
-    
+
+</details>
+<br>
+<details>
+  <summary>
+    PrjJpa04
+  </summary>
+  <ul dir="auto">
+    <br>
+
+    content-type : text/html;charset=UTF-8  = mime type
     
