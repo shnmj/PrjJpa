@@ -10,18 +10,19 @@ import lombok.Setter;
 
 // 실제 database의 table 구조를 생성 = create table 
 @Entity
-@NoArgsConstructor // 맥에서 안되면 밑에 따로 추가 / 기본생성자 : default constructor
+@NoArgsConstructor 
 @Getter
 @Setter
 public class Article {
 	@Id                    // primary key	
 	@GeneratedValue        // 값 자동 채움
 	private Long   id;     // Long : null 입력x -> Long
-	@Column
+	@Column  //  Column() 로 type 설정 가능
 	private String title;
 	@Column
 	private String content;
 	
+	// java에 사용 위한 내용들
 	// toString
 	@Override
 	public String toString() {
