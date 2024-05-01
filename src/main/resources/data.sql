@@ -1,4 +1,4 @@
--- oracle 전용 data
+-- oracle 전용 기초 data : table 생성 후 자동 실행
 INSERT INTO article(id, title, content) VALUES(article_seq.nextval, '가가가가', '1111');
 INSERT INTO article(id, title, content) VALUES(article_seq.nextval, '나나나나', '2222');
 INSERT INTO article(id, title, content) VALUES(article_seq.nextval, '다다다다', '3333');

@@ -30,10 +30,12 @@ public class ArticleController {
 		return "articles/write"; //  articles/write .mustache
 	}
 	
+	
 	// data 저장
 	// 405 error = method="POST" 인데 @GetMapping
 	// @GetMapping("/articles/Write")
 	// payload에 Form data (입력한 데이터가 담겨서 전송 -> title : aaa )
+	
 	@PostMapping("/articles/Write")
 	public String write(ArticleDto articleDto ) {
 		// 넘어온 데이터 확인
@@ -52,11 +54,13 @@ public class ArticleController {
 		return "redirect:/articles/List";
 	}
 	
+	
 	// 1번 data 조회
 	// java.lang.IllegalArgumentException: Name for argument of type [java.lang.Long] not specified
 	// 해결1. @PathVariable(value="id")
 	// 해결2. sts 설정 추가 방식 : ✅Properties - java compiler - enable, store 체크
 	// No default constructor for entity ... --> Arcicle에 @NoArgsConst 추가
+	
 	@GetMapping("/articles/{id}") // PathVariable = GET 방식
 	public String view(
 			@PathVariable(value="id") Long id,  // dto 제외 일반 변수는 value 입력 (이게 귀찮으면 해결2 ㄱㄱ)
@@ -69,10 +73,9 @@ public class ArticleController {
 		
 	// 2번 방법 --> 값이 있으면 담고, 없으면 or에 의해 null 넘어감
 		Article articleEntity = articleRepository.findById(id).orElse(null); 
-		
 		System.out.println("1번 조회 결과 : " + articleEntity);
 		model.addAttribute("article", articleEntity); // 조회한 결과 -> model에 담음
-		return "articles/view";  // view.mustache
+		return "articles/view";  // articles/view.mustache
 	}
 	
 	
@@ -87,10 +90,10 @@ public class ArticleController {
 		
 		List<Article> articleEntityList = articleRepository.findAll(); 
 		System.out.println("전체목록 : " + articleEntityList);
+		model.addAttribute("articleList", articleEntityList);
 		// findall 자체가 array type이 아님 -> 맞춰 달라
 		
-		model.addAttribute("articleList", articleEntityList);
-		return "articles/list"; 
+		return "articles/list";   // templates.articles/list.mustacche
 	}
 	
 	// 데이터 수정 페이지로 이동

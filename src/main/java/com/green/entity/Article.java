@@ -38,7 +38,8 @@ public class Article {
 	public String toString() {
 		return "Article [id=" + id + ", title=" + title + ", content=" + content + "]";
 	} 
-
+	
+	// 수정을 위한 용도를 추가
 	public void patch(Article article) {
 		if(article.title   != null)
 			this.title   = article.title;

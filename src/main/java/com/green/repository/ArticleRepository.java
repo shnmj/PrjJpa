@@ -10,12 +10,13 @@ import com.green.entity.Article;
 public interface ArticleRepository 
 	extends CrudRepository<Article, Long> {   // JPA의 Crud 기능을 동작시키는 class
 	// article, long이란 세이브가 만들어져있어서 일일이 save 사용 안해도 x
-
+	// ArticleRepo에 상속받게 해서(연결) findAll() 을 쓸 수 있도록
  	// Override/Implement Method로 사용가능한 함수 확인
 	
 	@Override
-	ArrayList<Article> findAll(); // 172p
+	ArrayList<Article> findAll(); // 172p  
 	Article save(ArticleForm dto);
+	
 	
 	// findAll 재정의
 	// crud를 상속받음 (interface도 가능)
