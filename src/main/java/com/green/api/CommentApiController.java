@@ -42,7 +42,7 @@ public class CommentApiController {
 	}
 	
 	// 2. 댓글 생성(POST)
-	// http://localhost:9090/api/articles/{articleId}/comments
+	// http://localhost:9090/api/articles/4/comments
 	
 	/*
 	  입력 data      : {"articleId":4, "nickname":"Hoon", "body":"이프 온리"}

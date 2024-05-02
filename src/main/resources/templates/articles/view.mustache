@@ -23,18 +23,18 @@
   </tbody>
 </table> 
 
-<a href="/articles/List"             class="btn btn-info">목록</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="/articles/WriteForm"        class="btn btn-secondary">글쓰기</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="/articles/{{id}}/EditForm"  class="btn btn-warning">수정</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="/articles/{{id}}/Delete"    class="btn btn-danger">삭제</a>
-
+<div class="mx-auto" style="width:80%)
+<a href="/articles/List"             class="btn btn-sm btn-info" style="width:100px;">목록</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="/articles/WriteForm"        class="btn btn-sm btn-secondary" style="width:100px;">글쓰기</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="/articles/{{article.id}}/EditForm"  class="btn btn-sm btn-warning" style="width:100px;">수정</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="/articles/{{id}}/Delete"    class="btn btn-sm btn-danger" style="width:100px;">삭제</a>
+{{! id (pathVariable) }}
+</div>
 
 	<! -- 댓글 view 화면 추가 -->
 
 
 	{{>comments/_comments}}
-
-
 
 
 {{>layouts/footer}}

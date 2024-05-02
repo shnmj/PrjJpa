@@ -12,8 +12,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.green.dto.ArticleDto;
 import com.green.dto.ArticleForm;
+import com.green.dto.CommentDto;
 import com.green.entity.Article;
 import com.green.repository.ArticleRepository;
+import com.green.service.CommentService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -23,6 +25,9 @@ public class ArticleController {
 	
 	@Autowired
 	private ArticleRepository articleRepository;
+	
+	@Autowired
+	private CommentService commentService;
 	
 	// data 입력
 	@GetMapping("/articles/WriteForm") // 교재 : articles = new
@@ -71,10 +76,16 @@ public class ArticleController {
 	// Optional<Article> articleEntity = articleRepository.findById(id); --> 교재에서 비추 
 	// Optional = 값이 있으면 Article 을 return, 없으면 null
 		
-	// 2번 방법 --> 값이 있으면 담고, 없으면 or에 의해 null 넘어감
+	// 2번 방법(id에 해당하는 게시글 조회) --> 값이 있으면 담고, 없으면 or에 의해 null 넘어감
 		Article articleEntity = articleRepository.findById(id).orElse(null); 
 		System.out.println("1번 조회 결과 : " + articleEntity);
-		model.addAttribute("article", articleEntity); // 조회한 결과 -> model에 담음
+		model.addAttribute("article", articleEntity); // 조회한 게시글 결과 -> model에 담음
+		
+		// 댓글 목록 조회 4번 게시글의 댓글 목록 -> model에 추가
+		List<CommentDto> commentDtos = commentService.comments(id);
+		model.addAttribute("commentDtos", commentDtos);
+		
+		
 		return "articles/view";  // articles/view.mustache
 	}
 	

@@ -53,7 +53,7 @@ public class CommentService {
 		// comments는 날라올때 entity type
 		return commentRepository.findByArticleId(articleId)  // arratyListId
 				.stream()   // stream으로 전환 - filter or Map 명령 사용 가능
-				.map(comment -> CommentDto.createCommentDto(comment)) // 하나씩 꺼내서 map에 담 / 
+				.map(comment -> CommentDto.createCommentDto(comment)) // 하나씩 꺼내서 map에 담 
 				.collect(Collectors.toList()); // stream을 다시 arrayList로 변환
 	}
 

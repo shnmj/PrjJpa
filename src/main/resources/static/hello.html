@@ -5,6 +5,37 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>Hello World</h2>
+	<h2 style="color:skyblue" data-id="4" data-commentid="없">Hello World1</h2>
+	<h2 style="color:skyblue" data-id="4" data-commentid="없">Hello World2</h2>
+	<p>큰 글자를 클릭하면 배경색이 노란색이 됩니다</p>
+	
+	<script>
+		// const h2El = document.getElmentsByTagName('h2')
+		
+		const h2Els = document.querySelectorAll('h2')
+		
+		console.dir(h2Els[0])
+		console.log(h2Els[0])
+		h2Els.forEach( (h2El, i) => {
+				h2El.onclick = function(e) {
+						const el = event.target;  // h2 / event.target == this
+						console.dir(e);
+						alert(el.innerHTML);   // == this(click한 El/h2).innerHTML
+						// this.style.backgroundColor = 'grey' // - 입력 시 연산으로 구분.
+						this.style['background-color'] = 'grey'
+						
+				}
+		});
+		
+		
+		/*
+		for(let i=0; i<h2Els.length; i++) {
+			h2Els[i].addEventListener('click', function() {    // function 대신 람다
+					alert(h2Els[i].innerHTML)
+			})
+		} 
+		*/
+
+	</script>
 </body>
 </html>
