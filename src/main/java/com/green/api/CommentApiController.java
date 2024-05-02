@@ -51,7 +51,6 @@ public class CommentApiController {
 	  결과 400 Error : {"id":4, 입력data key json type "" 안에 저장 
 	  500 Error      : 댓글 안 
 	*/
-	@Transactional
 	@PostMapping("/api/articles/{articleId}/comments")
 	public ResponseEntity<CommentDto> create(
 			@PathVariable Long articleId,     // {articleId} : 게시글 번호

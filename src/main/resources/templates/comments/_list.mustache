@@ -1,7 +1,5 @@
 <div id="comments-list">
-	<div class="card">
-	  {{#commentDtos}}
-	  
+	{{#commentDtos}}
 	  <!-- comments-id = comment.id --> 
 	  <div class="card m-2" id="comments-{{id}}">
 		  <div class="card-header">
@@ -12,12 +10,10 @@
 		    		&nbsp;
 	   	  <button type="button"
 	   			class="btn btn-sm btn-outline-danger comment-delete-btn">삭제</button> 
-	   				({{id}}, {{articleId}})
-	   				
+	   				( {{id}}, {{articleId}} )
 		  </div>
 		  <div class="card-body">
 		    {{body}}
 		  </div>
 	  {{/commentDtos}}
 	</div>
-</div>
