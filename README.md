@@ -328,5 +328,54 @@
     lazy
     컴파일 시 결정이 아닌 실행할 때 type 결정
     */
+
+</details>
+<br>
+<details>
+  <summary>
+    05.01
+  </summary>
+  <ul dir="auto">
+    <br>
+
+         class <-> oracle(table)
+    JPA (ORM Frame Lib)
+      hibernate (package name)
+      spring에서 db 조작법
+
+    HTE_ARTICLE (임시 table)
+
+    ----------------------------------------
     
+    Entity (남용x) - table 개수와 같게.
+    java class 문법으로 db 조작하는.
+    table 생성을 위해 사용한 class에 붙이는 @Entity
+
+    =======================
+
+            Entity           Dto
+    게시글   Article    <->  ArticleDto
+    댓글     Comments   <->  CommentDto
+
+                                        모든 결과가 json
+            Controller(결과 .mustache   RestController (실행 시 불러오는 함수 : json으로 return)
+    게시글   ArticleController          ArticleApiController
+    댓글                                CommentApiController
+
+
+      ArticleController
+          GetMapping  : /articles/List  :  게시글 목록 조회  ->  list.mustache
+
+          /articles/3 : 게시글 1개 조회  ->  1. index.html  2. /articles/List의 ReqMap 찾기 (@GetMapping)
+
+          GetMapping("/articles/{id}")                      -> view.mustache
+
+
+      *  Repository : db 조회 명령 interface
+
+
+
+
+
+
     
