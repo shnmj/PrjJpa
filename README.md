@@ -450,7 +450,7 @@
     
 
                     ArticleCont                            Service             Repo              Table
-		                @Cont
+		    @Cont
     게시글 목록     /articles/List                           x                   articleRepo      Article
                     view.musta(model:List<Article>)         
     
