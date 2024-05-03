@@ -13,8 +13,8 @@ import lombok.NoArgsConstructor;
 public class CommentDto {
 
 	private Long   id;         // 댓글 id
-	@JsonProperty("article_Id")
-	private Long   articleId;  // article에 있는 부모글 id
+	@JsonProperty("article_id") // 
+	private Long   articleId;  // article에 있는 부모글 id -> getArticleId
 	private String nickname;   
 	private String body;
 	

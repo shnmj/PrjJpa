@@ -28,7 +28,7 @@ public class CommentApiController {
 	@Autowired
 	private CommentService commentService;
 	
-	// 1. 댓글 조회(GET)
+	// 1. 댓글 목록 조회(GET)
 	@GetMapping("/api/articles/{articleId}/comments")
 	public ResponseEntity<List<CommentDto>> comments(
 			@PathVariable Long articleId) {
@@ -41,7 +41,7 @@ public class CommentApiController {
 		return ResponseEntity.status(HttpStatus.OK).body(dtos);
 	}
 	
-	// 2. 댓글 생성(POST)
+	// 2. 댓글 추가(POST)
 	// http://localhost:9090/api/articles/4/comments
 	
 	/*
@@ -55,6 +55,7 @@ public class CommentApiController {
 	public ResponseEntity<CommentDto> create(
 			@PathVariable Long articleId,     // {articleId} : 게시글 번호
 			@RequestBody CommentDto dto  ) {  // 저장을 위해 입력된 자료들(input, select : type으로 넘어온) 
+			// 입력된 자료들 input, select : js fetch body : {}
 		CommentDto createdDto = commentService.create(articleId, dto);
 		// 결과를 응답
 			return ResponseEntity.status(HttpStatus.OK).body(dto);
@@ -63,8 +64,8 @@ public class CommentApiController {
 	
 	// 3. 댓글 수정(PATCH)
 	// Patch   http://localhost:9090/api/comments/7
-	// 수정 전 data {"article_id":6, "id":7, "body"="조깅" "nickname"= "Park"}
-	// 입력    data {"article_id":6, "id":7, "body"="수영" "nickname"= "Park2"}
+	// 수정 전 data {"article_id":6, "id":7, "body":"조깅" "nickname":"Park"}
+	// 입력    data {"article_id":6, "id":7, "body":"수영" "nickname":"Park2"}
 	@PatchMapping("/api/comments/{id}")
 	public ResponseEntity<CommentDto> update (
 			@PathVariable  Long       id,

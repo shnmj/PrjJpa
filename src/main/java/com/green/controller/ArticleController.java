@@ -82,6 +82,7 @@ public class ArticleController {
 		model.addAttribute("article", articleEntity); // 조회한 게시글 결과 -> model에 담음
 		
 		// 댓글 목록 조회 4번 게시글의 댓글 목록 -> model에 추가
+		// service 사용 이유 : 
 		List<CommentDto> commentDtos = commentService.comments(id);
 		model.addAttribute("commentDtos", commentDtos);
 		

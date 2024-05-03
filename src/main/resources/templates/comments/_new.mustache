@@ -19,14 +19,14 @@
 					
 					<!-- 댓글 본문 -->
 					<div class="mb-3">
-						<label class="form-label>댓글 내용</label>
+						<label class="form-label">댓글 내용</label>
 						<label>
-							<textarea type="text" class="form-control" rows="3"
+							<textarea type="text" class="form-controll" rows="3"
 								id="new-comment-body"></textarea>
 						</label>
 						
 						<!-- 전송 버튼 -->
-						<button type="button" class="btn btn-primary"
+						<button type="button" class="btn btn-sm btn-primary"
 							id="comment-create-btn">댓글 등록</button>
 					</div>
 			</form>
@@ -38,14 +38,18 @@
 <script>
 	const commentCreateBtnEl = document.getElementById('comment-create-btn');
 	commentCreateBtnEl.addEventListener('click', () => {
+		 	// {{id}} : cont의 pathVariable - mustache 파일에서도 공유 가능
 			let url = 'http://localhost:9090/api/articles/{{id}}/comments';
+			// js 객체
+			
 			const comment = {
+			
 						// 새 댓글의 nickname
 						nickname : document.querySelector('#new-comment-nickname').value,
 						// 새 글의 본문
 						body     : document.querySelector('#new-comment-body').value,
 						// 부모 게시글의 id
-						article_Id : document.querySelector('#new-comment-id').value
+						article_id : document.querySelector('#new-comment-id').value
 				}
 				const params = {	
 						method  : 'POST', 
