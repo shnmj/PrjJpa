@@ -46,6 +46,9 @@
 </details>
 <li>Mustache 문법 참조 사이트 : https://bibi6666667.tistory.com/269</li>
 <br>
+<li>@JsonProperty 규칙 참조 사이트 : <br>
+  https://velog.io/@ssol_916/RequestBody%EB%A1%9C-%EB%B0%9B%EC%95%98%EB%8A%94%EB%8D%B0-null%EC%9D%B8-%EA%B2%BD%EC%9A%B0</li>
+<br>
 <details>
   <summary>
     Error 해결
@@ -328,5 +331,147 @@
     lazy
     컴파일 시 결정이 아닌 실행할 때 type 결정
     */
+
+</details>
+<br>
+<details>
+  <summary>
+    05.01
+  </summary>
+  <ul dir="auto">
+    <br>
+
+         class <-> oracle(table)
+    JPA (ORM Frame Lib)
+      hibernate (package name)
+      spring에서 db 조작법
+
+    HTE_ARTICLE (임시 table)
+
+    ----------------------------------------
+    
+    Entity (남용x) - table 개수와 같게.
+    java class 문법으로 db 조작하는.
+    table 생성을 위해 사용한 class에 붙이는 @Entity
+
+    =======================
+
+            Entity           Dto
+    게시글   Article    <->  ArticleDto
+    댓글     Comments   <->  CommentDto
+
+                                        모든 결과가 json
+            Controller(결과 .mustache   RestController (실행 시 불러오는 함수 : json으로 return)
+    게시글   ArticleController          ArticleApiController
+    댓글                                CommentApiController
+
+
+      ArticleController
+          GetMapping  : /articles/List  :  게시글 목록 조회  ->  list.mustache
+
+          /articles/3 : 게시글 1개 조회  ->  1. index.html  2. /articles/List의 ReqMap 찾기 (@GetMapping)
+
+          GetMapping("/articles/{id}")                      -> view.mustache
+
+
+      *  Repository : db 조회 명령 interface
+
+</details>
+<br>
+<details>
+  <summary>
+    05.02
+  </summary>
+  <ul dir="auto">
+    <br>
+
+    댓글처리 2
+
+    1. 
+      Spring Regacy
+                                                (데이터 영구 저장)
+        Presentation                                 Presist                 lib
+        Controller       <->     Service     <->     Dao(Repo)      <->      Mybatis      <->    Oracle
+  
+        @ReqMap("/")
+          index.jsp
+
+    2. 
+     SpringBoot    ->   embeded tomcat -> index.html( <a href="/articles"> )
+
+         Controller       <->     Service     <->     Dao(Repo)      <->      Mybatis      <->    Oracle
+         @ReqMap("/articles")                                                 mapper.xml
+         articles.jsp
+
+
+    3.
+      SpringBoot    ->   embeded tomcat -> index.html( <a href="/articles"> )
+                                                     ( fetch("/api/articles") )
+                                                       .then(json -> mustache안에 출력)
+         Controller       <->     Service     <->     Repo      <->      JPA      <->    Oracle
+         articles.mustache (list : .html + model)
+
+    ----------------------------
+    4.
+      RestController      <->     Service     <->     Repo      <->      JPA      <->    Oracle
+          @GetMap("/api/articles")
+          json
+
+    ++++++++++  (헷갈리는 부분 짚고 넘어가기)
+    Controller  (페이지 이동과 출력 담당)
+
+    Service     (db와 관계없는 업무처리하는 로직)
+
+    pathvariable (주소줄에 param 포함)
+
+    Controller   ->   view.mustache
+    model (에 담겨있는 것)
+      article
+      commentDtos
+
+    Req-Contoroller의 pathvariable포함 -> (jsp, mustache에서 꺼내서 사용 가능)  
+    
+
+
+
+</details>
+<br>
+<details>
+  <summary>
+    05.03
+  </summary>
+  <ul dir="auto">
+    <br>
+
+    <Rest API로 게시판 댓글 구현 with Modal by BootStrap>
+    
+    Review (헷갈리는 순서도는 매번 review를 통해 개념 확실히 잡기)
+
+    
+
+                    ArticleCont                            Service             Repo              Table
+		    @Cont
+    게시글 목록     /articles/List                           x                   articleRepo      Article
+                    view.musta(model:List<Article>)         
+    
+    
+                    CommentApiCont
+                    @RestCont
+    댓글 목록       /api/articles/{articleId}/comments     commentService      commentRepo       Comments
+                    json                                   List<Comments>   
+
+
+    ----------------------------------
+
+    Modal (Button Trigger)
+
+    show   =  modal 콘솔 창 출력 전.
+    shown  =  화면 출력 이후 alert 출력
+
+    div -> alert
+
+    button 누르기 전/후  ->  event 연결 시 확인
+
+    
     
     
